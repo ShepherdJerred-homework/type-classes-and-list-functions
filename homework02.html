@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Comp 475 Homework</title>
+    <link rel="stylesheet" href="../standard.css" type="text/css"/>
+    <base target="_top"/>
+    <style>
+      ol > li { margin-bottom: 4em; }
+    </style>
+  </head>
+  <body>
+    Write the following Haskell functions.  You <em>must</em> declare the
+    types for all functions.  You should make your types <em>as general as
+    possible</em>; use type classes where constraints are needed.
+    <ol class="spaced">
+      <li>
+        Write a function named <code>dotProduct</code> which takes two
+        parameters.  The parameters should be pairs representing 2-dimensional
+        vectors.  You are to calculate
+        the <a href="https://en.wikipedia.org/wiki/Dot_product">dot
+        product</a> of the two vectors.  The dot product of a =
+        (a<sub>x</sub>, a<sub>y</sub>) and b = (b<sub>x</sub>, b<sub>y</sub>)
+        is defined as a &middot; b = a<sub>x</sub>b<sub>x</sub> +
+        a<sub>y</sub>b<sub>y</sub>.
+        <pre class="console">
+ghci&gt; <span class="input">dotProduct (2, 6) (3, 1)</span>
+12
+</pre>
+      </li>
+      <li>
+        Write a function named <code>length</code> which takes one parameter.
+        The parameter should be a pair representing a 2-dimensional vector.
+        You are to calculate the length of the vector.  The length of a vector
+        v is defined as &radic;<span class="sqrt">v &middot; v</span>.
+        <pre class="console">
+ghci&gt; <span class="input">length (3, 4)</span>
+5
+</pre>
+      </li>
+      <li>
+        Write a function named <code>isUnique</code> which takes a list and
+        returns <code>True</code> if and only if every element in the list
+        occurs only in the list only once
+        <pre class="console">
+ghci&gt; ns = [ 3, 1, 4, 1, 5, 9, 2, 6 ]
+ghci&gt; <span class="input">isUnique ns</span>
+False
+ghci&gt; <span class="input">isUnique (drop 2 ns)</span>
+True
+</pre>
+      </li>
+      <li>
+        Write a function named <code>isAscending</code> which takes a list and
+        returns <code>True</code> if and only if the list is sorted in
+        ascending order
+        <pre class="console">
+ghci&gt; <span class="input">isAscending [1, 2, 3, 5, 8, 13]</span>
+True
+ghci&gt; <span class="input">isAscending [1, 6, 8, 4, 12, 22]</span>
+False
+</pre>
+      </li>
+      <li>
+        Write a function named <code>to</code> which behaves as
+        the range list construction in Haskell.  It should take two arguments
+        and create a list containing all the elements from one to the other.
+        <p>
+          You should not assume that the first argument is less than the
+          second argument; if it is greater than, then you should count down.
+          Use the <code>pred</code> and <code>succ</code> functions to count
+          up or down.
+        </p>
+        <pre class="console">
+ghci&gt; <span class="input">3 `to` 7</span>
+[3,4,5,6,7]
+ghci&gt; <span class="input">12 `to` 8</span>
+[12,11,10,9,8]
+ghci&gt; <span class="input">'p' `to` 'v'</span>
+"pqrstuv"
+</pre>
+      </li>
+    </ol>
+  </body>
+</html>
