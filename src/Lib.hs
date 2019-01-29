@@ -1,26 +1,22 @@
-module Lib ( dotProduct, isUnique, isAscending, to ) where
+module Lib ( dotProduct, vecLength, isUnique, isAscending, to ) where
 
 dotProduct :: (Num a) => (a, a) -> (a, a) -> a
 dotProduct (ax, ay) (bx, by) = (ax * bx) + (ay * by)
 
---vecLength :: (Num a) => (a, a) -> Float
---vecLength (x, y) = sqrt ((fromIntegral x) * (fromIntegral y))
+vecLength :: (Floating a) => (a, a) -> a
+vecLength (x, y) = sqrt (x * x + y * y)
 
 isUnique :: (Eq a) => [a] -> Bool
-isUnique (head:tail) = do
-  if length tail == 0
-    then True
-    else
-      if elem head tail
-        then False
-        else
-          isUnique tail
+isUnique [] = True
+isUnique [x] = True
+isUnique [x, y] = x /= y
+isUnique (x:xs) = not (elem x xs) && (isUnique xs)
 
 isAscending :: (Ord a) => [a] -> Bool
 isAscending [] = True
-isAscending (x:[]) = True
-isAscending (x:y:[]) = x <= y
+isAscending [x] = True
+isAscending [x, y] = x <= y
 isAscending (x:xs) = (isAscending xs) && (x <= head xs)
 
-to :: (Enum a) => a -> a -> [a]
-to start end = [start..end]
+to :: (Enum a, Ord a) => a -> a -> [a]
+to start end = if (start < end) then [start..end] else reverse [end..start]
